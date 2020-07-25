@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+    {% block content %}
+    {% for message in messages %}
+    <p style="color:red">{{ message }}</p>
+    <br/>
+
+    {% endfor %}
+    <h1>Create</h1>
+<!--    <div class="container">-->
+    <form method="post" action="{% url 'create'%}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4>Title:</h4>
+
+        <input type="text" name="title" >
+        <br/>
+
+        <h4>Body:</h4>
+
+        <input type="text" name="body">
+        <br/>
+
+        <h4>Icon:</h4>
+
+        <input type="file" name="icon">
+        <br/>
+
+        <h4>Image:</h4>
+
+        <input type="file" name="image">
+        <br/>
+
+        <h4>Url:</h4>
+
+        <input type="text" name="url">
+        <br/>
+        <br/>
+        <input type="submit" class="btn btn-primary" value="Add Product">
+    </form>
+<!--    </div>-->
+    {% endblock %}
+</body>
+</html>
